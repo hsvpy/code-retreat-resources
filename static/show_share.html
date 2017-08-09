@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>Show your shares</title>
+        <script
+            src="http://code.jquery.com/jquery-3.2.1.js"
+            integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+            crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <div></div>
+    </body>
+</html>
+
+<script type="text/javascript">
+$(document).ready(getExamples);
+
+function getExamples(){
+    $.get({
+        url: "/example",
+        success: showExamples
+    })
+}
+
+function showExamples(data){
+    $("div").empty()
+    data.examples.forEach((val) => $("div").append("<span>"+val.example+"</span><br /><br />"));
+}
+</script>

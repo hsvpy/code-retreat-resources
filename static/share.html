@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <title>Share your examples</title>
+        <script
+            src="http://code.jquery.com/jquery-3.2.1.js"
+            integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+            crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <h1>You can paste in your code to share it</h1>
+        <textarea id="share">Paste your code here</textarea>
+        <br/>
+        <button>Share</button>
+    </body>
+</html>
+
+<script type="text/javascript">
+$(document).ready(setupButtonHandler);
+function setupButtonHandler(){
+    $("button").on("click", sendPost)
+}
+
+function sendPost(){
+    $.ajax({
+        type: "POST",
+        url: "/example",
+        data: JSON.stringify({example: $("#share").val()}),
+        contentType: "application/json"
+    })
+}
+</script>
